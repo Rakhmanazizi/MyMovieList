@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MovieKu</string>
+    <string name="search">Search</string>
+    <string name="favorite">Favotire</string>
+    <string name="title">Judul Film</string>
+    <string name="genre">Genre</string>
+    <string name="rating">5.0</string>
+    <string name="release">Released Year</string>
+    <string name="year">2024</string>
+    <string name="director">Director</string>
+    <string name="director_name">Nama Director</string>
+    <string name="desc">Deskripsi</string>
+    <string name="content_desc">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris luctus nulla enim. Vivamus non aliquam arcu. Morbi fermentum eros at tellus varius bibendum. Proin ut mi dignissim, ultricies ex eget, semper neque. Ut vel erat tempus, pulvinar velit vitae, volutpat magna. Aenean ultricies sapien ut tortor feugiat, at suscipit augue mollis. Donec vel tortor turpis. In egestas nunc sed arcu gravida rutrum.
+    </string>
+    <string name="movie_empty">Film tidak ada di daftar</string>
+    <string name="detail_movie">Detail Movie</string>
+    <string name="favorite_page">My Favorite</string>
+</resources>
