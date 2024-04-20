@@ -26,7 +26,6 @@ abstract class MovieRoomDatabase : RoomDatabase() {
                 }
             }
             return INSTANCE as MovieRoomDatabase
-//
         }
     }
 }
