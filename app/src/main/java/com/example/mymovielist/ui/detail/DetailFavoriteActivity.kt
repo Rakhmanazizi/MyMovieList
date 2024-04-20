@@ -6,6 +6,7 @@ import android.os.Handler
 import android.os.Looper
 import android.view.Menu
 import android.widget.Toast
+import androidx.appcompat.app.AlertDialog
 import com.bumptech.glide.Glide
 import com.example.crudlocaldb.data.MovieRoomDatabase
 import com.example.mymovielist.R
@@ -40,10 +41,28 @@ class DetailFavoriteActivity : AppCompatActivity() {
         database = MovieRoomDatabase.getInstance(applicationContext)
 
         binding.fabDelete.setOnClickListener {
-            GlobalScope.launch(Dispatchers.IO) {
-                database.movieDao().delete(movieModel)
-                finish()
-            }
+            showConfirmationDeleteDialog()
+        }
+    }
+
+    private fun showConfirmationDeleteDialog() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Hapus ${movieModel.judul?.capitalize()}")
+        builder.setMessage("Apakah anda ingin mengahapus ${movieModel.judul}?")
+        builder.setPositiveButton("Ya") { _, _ ->
+            deleteItem()
+        }
+        builder.setNegativeButton("Tidak") { _, _ ->
+
+        }
+        val dialog = builder.create()
+        dialog.show()
+    }
+
+    private fun deleteItem() {
+        GlobalScope.launch(Dispatchers.IO) {
+            database.movieDao().delete(movieModel)
+            finish()
         }
     }
 
