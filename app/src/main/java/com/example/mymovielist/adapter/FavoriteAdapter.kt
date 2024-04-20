@@ -5,50 +5,57 @@ import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
-import android.widget.TextView
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.Recycler
 import com.bumptech.glide.Glide
-import com.example.mymovielist.R
 import com.example.mymovielist.database.entity.MovieModel
 import com.example.mymovielist.databinding.ItemFavoriteMovieBinding
-import com.example.mymovielist.databinding.ItemRowMovieBinding
 import com.example.mymovielist.ui.detail.DetailFavoriteActivity
-import com.example.mymovielist.ui.main.FavoriteActivity
-import kotlinx.coroutines.withContext
-import kotlin.math.sign
 
-class FavoriteAdapter : RecyclerView.Adapter<FavoriteAdapter.ListViewHolder>() {
+class FavoriteAdapter() : RecyclerView
+    .Adapter<FavoriteAdapter
+    .ListViewHolder>() {
     private lateinit var binding: ItemFavoriteMovieBinding
-    private lateinit var onItemClickCallback: OnItemClickCallback
+    private lateinit var mListener: OnItemClickListener
 
-    interface OnItemClickCallback {
-        fun onItemClicked(data: MovieModel)
+    interface OnItemClickListener {
+        fun onItemClicked(movieModel: MovieModel)
     }
 
-    fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
-        this.onItemClickCallback = onItemClickCallback
+    fun setOnItemClickCallback(onItemClickCallback: OnItemClickListener) {
+        this.mListener = onItemClickCallback
     }
 
     inner class ListViewHolder : RecyclerView.ViewHolder(binding.root) {
-        fun bind(movie: MovieModel) {
-            binding.apply {
-                Glide.with(itemView)
-                    .load(movie.poster)
+        fun bind(movieModel: MovieModel) {
+            binding = ItemFavoriteMovieBinding.bind(itemView)
+            with(binding) {
+                Glide.with(itemView.context)
+                    .load(movieModel.poster)
                     .into(imgMovie)
-                tvMovieRelease.text = movie.tahunRilis.toString()
-                tvMovieTitle.text = movie.judul
-                tvMovieGenre.text = movie.genre
-                tvMovieRate.text = movie.rating.toString()
+                tvMovieRelease.text = movieModel.tahunRilis.toString()
+                tvMovieTitle.text = movieModel.judul
+                tvMovieGenre.text = movieModel.genre
+                tvMovieRate.text = movieModel.rating.toString()
             }
             itemView.setOnClickListener {
-                val intent = Intent(itemView.context, DetailFavoriteActivity::class.java)
-                intent.putExtra("movie", movie)
-                itemView.context.startActivity(intent)
+                mListener.onItemClicked(movieModel)
             }
+//            binding.apply {
+//                Glide.with(itemView)
+//                    .load(movieModel.poster)
+//                    .into(imgMovie)
+//                tvMovieRelease.text = movieModel.tahunRilis.toString()
+//                tvMovieTitle.text = movieModel.judul
+//                tvMovieGenre.text = movieModel.genre
+//                tvMovieRate.text = movieModel.rating.toString()
+//            }
+//            itemView.setOnClickListener {
+//                val intent = Intent(itemView.context, DetailFavoriteActivity::class.java)
+//                intent.putExtra("movie", movieModel)
+//                itemView.context.startActivity(intent)
+//            }
         }
     }
 

@@ -5,9 +5,7 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import androidx.room.Update
 import com.example.mymovielist.database.entity.MovieModel
-import com.example.mymovielist.model.Movie
 
 @Dao
 interface MovieDao {
@@ -27,5 +25,5 @@ interface MovieDao {
     fun getMovieByTitle(judul: String): MovieModel
 
     @Query("DELETE FROM moviemodel WHERE judul = :judul")
-    fun deleteByTitle(judul: String)
+    fun deleteByTitle(judul: String?)
 }
