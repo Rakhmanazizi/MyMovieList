@@ -18,6 +18,7 @@ import com.example.mymovielist.ui.detail.DetailFavoriteActivity
 class FavoriteActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFavoriteBinding
     private lateinit var ViewModel: FavoriteViewModel
+    private lateinit var movieList: List<MovieModel>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
