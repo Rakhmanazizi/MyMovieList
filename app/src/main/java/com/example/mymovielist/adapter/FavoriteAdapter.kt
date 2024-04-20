@@ -42,20 +42,6 @@ class FavoriteAdapter() : RecyclerView
             itemView.setOnClickListener {
                 mListener.onItemClicked(movieModel)
             }
-//            binding.apply {
-//                Glide.with(itemView)
-//                    .load(movieModel.poster)
-//                    .into(imgMovie)
-//                tvMovieRelease.text = movieModel.tahunRilis.toString()
-//                tvMovieTitle.text = movieModel.judul
-//                tvMovieGenre.text = movieModel.genre
-//                tvMovieRate.text = movieModel.rating.toString()
-//            }
-//            itemView.setOnClickListener {
-//                val intent = Intent(itemView.context, DetailFavoriteActivity::class.java)
-//                intent.putExtra("movie", movieModel)
-//                itemView.context.startActivity(intent)
-//            }
         }
     }
 
