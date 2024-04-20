@@ -3,9 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <item
-        android:id="@+id/action_back"
+        android:id="@+id/action_back_detail"
         android:icon="@drawable/ic_back"
         android:title="kembali"
         app:showAsAction="ifRoom" />
-
 </menu>
