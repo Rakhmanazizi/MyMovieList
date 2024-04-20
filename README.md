@@ -1,4 +1,8 @@
 # MovieKu (Android)
+
+Nama : Muhammad Arif Rakhman Azizi
+NIM : 21106050042
+
 Is the android application to display movie list and display detail movie.
 This Application use:
 1. Kotlin
